@@ -33,9 +33,9 @@ function delete-folder()
 	i3setupDir=$(pwd)
 
 echo "The folder "$i3setupDir" will self-destruct \n Do you agree? (Y/N)"
-read self-destroy
+read selfdestroy
 
-if [[  $self-destroy == "y" || $self-destroy == "Y" ]]
+if [[  $selfdestroy == "y" || $selfdestroy == "Y" ]]
 	then cd ..
 	rm -rf "$i3setupDir"
 	echo "ok"
