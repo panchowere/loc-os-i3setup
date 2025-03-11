@@ -1,7 +1,7 @@
 #! /bin/bash
 
-echo -e "this script will install the following programs: \n i3wm \n i3block \n kitty \n rofi \n picom \n feh \n Neovim\n Xdg-user-dir \n lxappearance \n \033[33mWARNING:\033[0m This script will modify configuration files"
-echo "Do you agree? Y/N:" & read YN 
+echo -e "this script will install the following programs: \n i3wm \n i3block \n kitty \n rofi \n picom \n feh \n Xdg-user-dir \n lxappearance \n And compile the following programs:\n Neovim \n \033[33mWARNING:\033[0m This script will modify configuration files"
+echo "Do you agree? (Y/N):" & read YN 
 function dotFiles()
 {
 	echo "Copying fonts to .fonts"
@@ -18,10 +18,35 @@ function dotFiles()
 	cp -r ./wallpapers/ "$(xdg-user-dir PICTURES)"
 }
 
+function nvimCompile
+{
+
+	sudo apt-get install ninja-build gettext cmake curl build-essential -y
+	git clone https://github.com/neovim/neovim && cd neovim && git checkout stable
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	cd build && cpack -G DEB && sudo dpkg -i nvim-*.deb
+
+}
+
+function delete-folder()
+{
+	i3setupDir=$(pwd)
+
+echo "The folder "$i3setupDir" will self-destruct \n Do you agree? (Y/N)"
+read self-destroy
+
+if [[  $self-destroy == "y" || $self-destroy == "Y" ]]
+    cd ..
+    rm -rf "$i3setupDir"
+    echo "ok"
+else
+    echo "bye bye~"
+fi
+
+}
 
 if [[ $YN == "y" || $YN == "Y" ]]
-	then sudo apt install i3-wm rofi i3blocks rofi picom feh neovim xdg-user-dirs kitty && xdg-user-dirs-update && dotFiles
-		
+	then sudo apt install i3-wm rofi i3blocks rofi picom feh xdg-user-dirs kitty build-essential && xdg-user-dirs-update && dotFiles && sudo apt remove neovim -y && nvimCompile && delete-folder && echo "ok, Bye!" && exit 1		
 elif [[ $YN == "n" || $YN == "N" ]]
 	then echo "ok, Bye!" && exit 1 
 else 
