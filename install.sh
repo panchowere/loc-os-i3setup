@@ -36,9 +36,9 @@ echo "The folder "$i3setupDir" will self-destruct \n Do you agree? (Y/N)"
 read self-destroy
 
 if [[  $self-destroy == "y" || $self-destroy == "Y" ]]
-    cd ..
-    rm -rf "$i3setupDir"
-    echo "ok"
+	then cd ..
+	rm -rf "$i3setupDir"
+	echo "ok"
 else
     echo "bye bye~"
 fi
