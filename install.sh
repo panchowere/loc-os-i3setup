@@ -46,7 +46,7 @@ fi
 }
 
 if [[ $YN == "y" || $YN == "Y" ]]
-	then sudo apt install i3-wm rofi i3blocks rofi picom feh xdg-user-dirs kitty build-essential && xdg-user-dirs-update && dotFiles && sudo apt remove neovim -y && nvimCompile && delete-folder && echo "ok, Bye!" && exit 1		
+	then sudo apt install i3-wm rofi i3blocks rofi picom feh xdg-user-dirs kitty build-essential && xdg-user-dirs-update && dotFiles && sudo apt remove neovim neovim-runtime -y && nvimCompile && delete-folder && echo "ok, Bye!" && exit 1		
 elif [[ $YN == "n" || $YN == "N" ]]
 	then echo "ok, Bye!" && exit 1 
 else 
