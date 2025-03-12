@@ -1,0 +1,16 @@
+This config for i3 use a vim-based hotkeys for controling it
+
+basically change
+this setup  / for / this setup
+mod + ntilde => mod + l
+mod + l => mod + k
+mod + k => mod + j
+mod + j => mod + h
+
+mod + shift + ntilde => mod + l
+mod + shift + l => mod + k
+mod + shift + k => mod + j
+mod + shift + j => mod + h
+
+The same for resize mode. if you don´t feel comfortable use
+Vim keys, use the arrows and change it in i3 config.

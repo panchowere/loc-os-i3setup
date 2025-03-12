@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo -e "this script will install the following programs: \n i3wm \n i3block \n lxterminal \n rofi \n picom \n feh \n Xdg-user-dir \n lxappearance \n lxpolkit \n ETC... \n And compile the following programs:\n Neovim \n \033[33mWARNING:\033[0m This script will modify configuration files"
+echo -e "this script will install the following programs: \n i3wm \n i3block \n lxterminal \n rofi \n picom \n nitrogen \n Xdg-user-dir \n lxappearance \n lxpolkit \n ETC... \n And compile the following programs:\n Neovim \n \033[33mWARNING:\033[0m This script will modify configuration files"
 echo "Do you agree? (Y/N):" & read YN 
 function dotFiles()
 {
@@ -60,7 +60,7 @@ fi
 }
 
 if [[ $YN == "y" || $YN == "Y" ]]
-	then sudo apt install i3-wm rofi i3blocks rofi picom feh xdg-user-dirs lxterminal lxpolkit lxappearance acpi alsa-utils xclip sysstat build-essential && xdg-user-dirs-update && dotFiles && sudo apt remove neovim neovim-runtime -y && nvimCompile && delete-folder && echo "ok, Bye!" && exit 1		
+	then sudo apt install i3-wm rofi i3blocks rofi picom nitrogen xdg-user-dirs lxterminal lxpolkit lxappearance acpi alsa-utils xclip sysstat build-essential && xdg-user-dirs-update && dotFiles && sudo apt remove neovim neovim-runtime -y && nvimCompile && delete-folder && echo "Read keys.txt!" && exit 1		
 elif [[ $YN == "n" || $YN == "N" ]]
 	then echo "ok, Bye!" && exit 1 
 else 
